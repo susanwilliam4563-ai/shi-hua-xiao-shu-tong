@@ -1,0 +1,1 @@
+{"name":"poem-scholar","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"node scripts/serve.mjs","lint":"node scripts/check.mjs","typecheck":"node scripts/check.mjs","test":"node --test tests/*.test.mjs","build":"node scripts/build.mjs"},"engines":{"node":">=18"}}

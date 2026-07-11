@@ -1,0 +1,6 @@
+import fs from 'node:fs';import path from 'node:path';
+const root=process.cwd(),out=path.join(root,'dist'),files=['index.html','src/app.js','src/poems.js','src/review.js','src/games.js','src/storage.js','src/styles.css','src/rewards.css'];fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(path.join(out,'src'),{recursive:true});
+for(const f of files)fs.copyFileSync(path.join(root,f),path.join(out,f));
+const assets=Object.fromEntries(files.map(f=>['/'+f,fs.readFileSync(path.join(root,f),'utf8')]));assets['/']=assets['/index.html'];
+const worker=`const assets=${JSON.stringify(assets)};const types={'.html':'text/html;charset=utf-8','.js':'text/javascript;charset=utf-8','.css':'text/css;charset=utf-8'};export default {async fetch(request){const path=new URL(request.url).pathname;const body=assets[path]??assets['/'];const ext=path.slice(path.lastIndexOf('.'));return new Response(body,{headers:{'content-type':types[ext]||'text/html;charset=utf-8','cache-control':path==='/'?'no-cache':'public, max-age=3600','x-content-type-options':'nosniff','referrer-policy':'strict-origin-when-cross-origin'}})}};`;
+fs.mkdirSync(path.join(out,'server'),{recursive:true});fs.writeFileSync(path.join(out,'server/index.js'),worker);console.log('生产构建完成：dist/');
