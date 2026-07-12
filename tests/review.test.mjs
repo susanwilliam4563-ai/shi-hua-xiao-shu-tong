@@ -5,3 +5,6 @@ test('到期任务优先于新诗',()=>{let now=Date.now();assert.ok(taskPriorit
 test('每日任务数可配置且诗词不重复',()=>{let tasks=createDailyTasks(poems,{},5,0);assert.equal(tasks.length,5);assert.equal(new Set(tasks.map(x=>x.poemId)).size,5)});
 test('内容至少 25 首且字段完整',()=>{assert.ok(poems.length>=25);for(const p of poems){assert.ok(p.lines.length>=4);assert.equal(p.pinyin.length,p.lines.length);assert.equal(p.explanations.length,p.lines.length);assert.ok(p.questions.length>=4)}});
 test('成都一至三年级上册清单完整覆盖',()=>{const expected=['江南','画','咏鹅','悯农（其二）','古朗月行（节选）','风','登鹳雀楼','望庐山瀑布','梅花','小儿垂钓','江雪','夜宿山寺','敕勒歌','山行','赠刘景文','夜书所见','望天门山','饮湖上初晴后雨','望洞庭'];const upper=poems.filter(p=>p.semester==='上').map(p=>p.title);for(const title of expected)assert.ok(upper.includes(title),`缺少 ${title}`)});
+test('普通游戏不能直接判定会背或长期掌握',()=>{let p=scheduleReview({level:3},{correct:true,errorType:'上下句衔接'},1000);assert.equal(p.level,3)});
+test('独立背诵可达到会背但长期掌握需要延迟证据',()=>{let p=scheduleReview({level:3,lastLearnedAt:1000,delayedSuccesses:0},{correct:true,recitation:true,selfRating:'independent'},1000+DAY);assert.equal(p.level,4);assert.equal(p.delayedSuccesses,1)});
+test('错误类型会进入可解释证据',()=>{let p=scheduleReview({level:2},{correct:false,errorType:'诗句顺序'},1000);assert.equal(p.errors.at(-1),'诗句顺序');assert.equal(p.lastEvidence.type,'诗句顺序')});
