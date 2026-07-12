@@ -15,6 +15,7 @@ export const gameModes=[
 
 function distractPoems(poems,poem,field,count=3){return unique(rotate(poems,poems.indexOf(poem)+1).filter(p=>p[field]!==poem[field]).map(p=>p[field])).slice(0,count)}
 function makeTypo(line){const swaps=[['月','日'],['山','水'],['花','草'],['风','云'],['白','百'],['春','秋'],['天','田'],['鸟','马']];for(const [a,b] of swaps)if(line.includes(a))return line.replace(a,b);return line.slice(0,-1)+'木'}
+export function blankForPoem(poem,index=0){const line=poem.lines[index%poem.lines.length];let word=poem.imagery.find(x=>line.includes(x));if(!word){const parts=line.split(/[，。！？、]/).filter(Boolean),part=parts.find(x=>x.length>=2)||parts[0];word=part.length<=2?part:part.slice(Math.min(2,part.length-2),Math.min(4,part.length))}const pool=unique([word,...poem.imagery.filter(x=>x!==word),...poem.lines.map(x=>x.replace(/[，。！？、]/g,'').slice(0,2)).filter(x=>x!==word)]).slice(0,4);return {line,word,masked:line.replace(word,'＿＿'),options:pool}}
 
 export function createQuestion(type,poem,poems,index=0){
   const lineIndex=index%3,line=poem.lines[lineIndex],next=poem.lines[lineIndex+1];
@@ -22,8 +23,8 @@ export function createQuestion(type,poem,poems,index=0){
   if(type==='next')return {type,poemId:poem.id,prompt:`“${line}”的下一句是？`,answer:next,options:unique([next,...poem.lines.filter(x=>x!==next).slice(0,3)]),tip:'沿着诗里的画面往下走。'};
   if(type==='typo'){const wrong=makeTypo(line);return {type,poemId:poem.id,prompt:'哪一句写得完全正确？',answer:line,options:unique([wrong,line,...poem.lines.filter(x=>x!==line).slice(0,2)]),tip:'慢慢读，看看哪个字让画面变了。'}}
   if(type==='season')return {type,poemId:poem.id,prompt:`《${poem.title}》最适合放进哪个季节篮子？`,answer:poem.season,options:['春','夏','秋','冬'],tip:'找一找诗里的天气、花草和颜色。'};
-  if(type==='order')return {type,poemId:poem.id,prompt:'哪组诗句顺序正确？',answer:poem.lines.join(' → '),options:unique([poem.lines.join(' → '),[...poem.lines].reverse().join(' → '),rotate(poem.lines,1).join(' → ')]),tip:'从第一幅画开始，在脑海里走一遍。'};
-  if(type==='blank'){const word=poem.imagery.find(x=>line.includes(x))||line.slice(0,2);return {type,poemId:poem.id,prompt:`${line.replace(word,'＿＿')}，空白处是什么？`,answer:word,options:unique([word,...poem.imagery.filter(x=>x!==word),...distractPoems(poems,poem,'imagery').flat()]).slice(0,4),tip:'轻声读完整句，听一听节奏。'}}
+  if(type==='order')return {type,poemId:poem.id,prompt:'依次点击，把诗句排回正确顺序',answer:poem.lines.join('|'),options:rotate(poem.lines,2),tip:`第一句是“${poem.lines[0]}”。`};
+  if(type==='blank'){const blank=blankForPoem(poem,index);return {type,poemId:poem.id,prompt:`${blank.masked}，空白处是什么？`,answer:blank.word,options:blank.options,tip:'轻声读完整句，再从词语卡里选择。'}}
   if(type==='author')return {type,poemId:poem.id,prompt:`《${poem.title}》的作者是谁？`,answer:poem.author,options:unique([poem.author,...distractPoems(poems,poem,'author')]),tip:'想想诗名旁边见过的诗人。'};
   return {type:'theme',poemId:poem.id,prompt:`《${poem.title}》主要写的是哪类画面或心情？`,answer:poem.theme,options:unique([poem.theme,...distractPoems(poems,poem,'theme')]),tip:'先说说诗里发生了什么。'};
 }
