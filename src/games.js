@@ -2,15 +2,15 @@ const unique=items=>[...new Set(items)];
 const rotate=(items,offset)=>items.map((_,i)=>items[(i+offset)%items.length]);
 
 export const gameModes=[
-  {id:'mixed',title:'诗词大闯关',desc:'八种玩法轮流出现，适合每天挑战',icon:'🏮'},
-  {id:'title',title:'看图猜诗',desc:'看意象线索，找出藏在画里的诗',icon:'👀'},
-  {id:'next',title:'上下句连线',desc:'读上句，接住正确的下句',icon:'🧩'},
-  {id:'typo',title:'错字侦探',desc:'找出偷偷换掉字的诗句',icon:'🔍'},
-  {id:'season',title:'季节分类',desc:'把诗送回它的季节篮子',icon:'🍂'},
-  {id:'order',title:'诗句排序',desc:'沿着画面路线排好整首诗',icon:'🪁'},
-  {id:'blank',title:'关键词填空',desc:'找回藏起来的意象词',icon:'✍️'},
-  {id:'author',title:'诗人与作品',desc:'帮诗找到它的作者',icon:'🪶'},
-  {id:'theme',title:'主题小侦探',desc:'辨认山水、思乡与童趣',icon:'🗺️'}
+  {id:'mixed',title:'诗词大闯关',desc:'八种玩法轮流出现，适合每天挑战',icon:'闯'},
+  {id:'title',title:'看图猜诗',desc:'看意象线索，找出藏在画里的诗',icon:'画'},
+  {id:'next',title:'上下句连线',desc:'读上句，接住正确的下句',icon:'接'},
+  {id:'typo',title:'错字侦探',desc:'找出偷偷换掉字的诗句',icon:'辨'},
+  {id:'season',title:'季节分类',desc:'把诗送回它的季节篮子',icon:'时'},
+  {id:'order',title:'诗句排序',desc:'沿着画面路线排好整首诗',icon:'序'},
+  {id:'blank',title:'关键词填空',desc:'找回藏起来的意象词',icon:'填'},
+  {id:'author',title:'诗人与作品',desc:'帮诗找到它的作者',icon:'人'},
+  {id:'theme',title:'主题小侦探',desc:'辨认山水、思乡与童趣',icon:'意'}
 ];
 
 function distractPoems(poems,poem,field,count=3){return unique(rotate(poems,poems.indexOf(poem)+1).filter(p=>p[field]!==poem[field]).map(p=>p[field])).slice(0,count)}
