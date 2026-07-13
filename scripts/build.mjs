@@ -1,5 +1,5 @@
 import fs from 'node:fs';import path from 'node:path';
-const root=process.cwd(),out=path.join(root,'dist'),files=['index.html','src/app.js','src/poems.js','src/review.js','src/games.js','src/storage.js','src/styles.css','src/rewards.css','src/corrections.css'];fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(path.join(out,'src'),{recursive:true});
+const root=process.cwd(),out=path.join(root,'dist'),files=['index.html','src/app.js','src/poems.js','src/terms.js','src/review.js','src/games.js','src/storage.js','src/styles.css','src/rewards.css','src/corrections.css','src/reading.css'];fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(path.join(out,'src'),{recursive:true});
 for(const f of files)fs.copyFileSync(path.join(root,f),path.join(out,f));
 const assets=Object.fromEntries(files.map(f=>['/'+f,fs.readFileSync(path.join(root,f),'utf8')]));assets['/']=assets['/index.html'];
 const imageDir=path.join(root,'public/images'),imageFiles=fs.existsSync(imageDir)?fs.readdirSync(imageDir).filter(f=>f.endsWith('.png')):[],binary=Object.fromEntries(imageFiles.map(f=>['/images/'+f,fs.readFileSync(path.join(imageDir,f)).toString('base64')]));if(imageFiles.length){fs.mkdirSync(path.join(out,'images'),{recursive:true});for(const f of imageFiles)fs.copyFileSync(path.join(imageDir,f),path.join(out,'images',f))}
