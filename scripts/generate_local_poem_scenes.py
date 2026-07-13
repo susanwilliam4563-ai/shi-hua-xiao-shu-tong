@@ -31,7 +31,7 @@ SCENES = {
     "wang-dong-ting": "autumn moon lake island",
 }
 
-W, H = 960, 640
+W, H = 720, 480
 
 def seed_for(name): return int(hashlib.sha256(name.encode()).hexdigest()[:12], 16)
 
@@ -41,19 +41,21 @@ def wash(draw, rng, y, color, count=12):
         draw.ellipse((x-rx,yy-35,x+rx,yy+35), fill=color)
 
 def mountains(draw, rng, snow=False):
-    for layer,(base,col) in enumerate([(340,(116,143,130,70)),(410,(77,111,98,90)),(475,(51,83,72,120))]):
-        pts=[(-40,H)]
-        x=-40
+    # 不规则长山势配合多层半透明干笔，避免规则三角形的扁平矢量感。
+    for layer,(base,col) in enumerate([(300,(91,119,106,38)),(365,(65,92,80,52)),(430,(42,67,57,68))]):
+        points=[(-50,H),(-50,base)]; x=-50
         while x<W+80:
-            peak=base-rng.randint(55,170)+layer*18
-            pts.extend([(x,base),(x+rng.randint(55,100),peak),(x+rng.randint(110,180),base)])
-            x+=rng.randint(130,210)
-        pts += [(W+40,H)]
-        draw.polygon(pts, fill=col)
+            width=rng.randint(115,220); peak=base-rng.randint(50,145)
+            points.extend([(x+width*.18,base-rng.randint(8,35)),(x+width*.42,peak),(x+width*.58,peak+rng.randint(10,45)),(x+width,base+rng.randint(-8,22))]); x+=width
+        points.extend([(W+50,H)]); draw.polygon(points,fill=col)
+        for _ in range(45):
+            x1=rng.randint(0,W); y1=rng.randint(max(50,base-150),base); length=rng.randint(15,70)
+            draw.line((x1,y1,x1-rng.randint(4,30),min(base,y1+length)),fill=(37,55,47,rng.randint(8,25)),width=rng.randint(1,4))
         if snow:
             for i in range(5):
-                x=80+i*185+rng.randint(-30,30); y=base-rng.randint(70,140)
-                draw.polygon([(x,y),(x-35,y+55),(x,y+42),(x+30,y+58)],fill=(245,244,235,180))
+                x=70+i*145+rng.randint(-25,25); y=base-rng.randint(65,125)
+                draw.polygon([(x,y),(x-25,y+42),(x,y+32),(x+24,y+44)],fill=(245,244,235,145))
+    for y in (300,365): wash(draw,rng,y,(248,244,229,48),7)
 
 def tree(draw,x,y,scale=1,autumn=False,plum=False,willow=False):
     ink=(59,67,54,220); draw.line((x,y,x-8*scale,y-150*scale),fill=ink,width=max(3,int(9*scale)))
@@ -149,9 +151,22 @@ def render(key,tags):
     texture=Image.new('RGBA',(W,H),(0,0,0,0)); td=ImageDraw.Draw(texture,'RGBA')
     for _ in range(7000):
         x=rng.randrange(W); y=rng.randrange(H); v=rng.choice([(75,61,45,8),(255,255,245,10)]); td.point((x,y),fill=v)
-    img=Image.alpha_composite(img,texture).filter(ImageFilter.GaussianBlur(.18)).convert('RGB')
-    img.save(OUT/f"{key}.png",optimize=True)
+    img=Image.alpha_composite(img,texture).convert('RGB')
+    # 宣纸颗粒、柔和晕染与墨线叠印，形成淡彩水墨而非扁平插画。
+    softened=img.filter(ImageFilter.GaussianBlur(1.7))
+    edges=img.filter(ImageFilter.FIND_EDGES).convert('L').point(lambda x: 255-x)
+    ink=Image.new('RGB',(W,H),(50,55,47))
+    img=Image.blend(img,softened,.42)
+    img=Image.composite(ink,img,edges.point(lambda x: 44 if x<150 else 0))
+    img.save(OUT/f"{key}.webp",'WEBP',quality=72,method=6)
 
 OUT.mkdir(parents=True,exist_ok=True)
 for key,tags in SCENES.items(): render(key,tags)
-print(f"generated {len(SCENES)} original images in {OUT}")
+for size,name in [(192,'app-icon.png'),(512,'app-icon-512.png')]:
+    icon=Image.new('RGB',(size,size),(246,239,220)); d=ImageDraw.Draw(icon)
+    d.ellipse((size*.18,size*.14,size*.82,size*.78),fill=(211,229,217),outline=(42,92,74),width=max(3,size//40))
+    d.line((size*.5,size*.67,size*.5,size*.36),fill=(42,92,74),width=max(5,size//22))
+    d.ellipse((size*.35,size*.32,size*.51,size*.47),fill=(77,135,93)); d.ellipse((size*.49,size*.25,size*.67,size*.41),fill=(77,135,93))
+    d.rectangle((size*.28,size*.68,size*.72,size*.79),fill=(178,91,60))
+    icon.save(OUT/name,optimize=True)
+print(f"generated {len(SCENES)} lightweight ink-wash images in {OUT}")
