@@ -1,0 +1,33 @@
+.hero-art {
+  font-size: 1rem;
+}
+
+.hero-art img {
+  min-height: 0;
+}
+
+.hero-art figcaption {
+  min-width: 0;
+}
+
+.hero-art figcaption small {
+  font-size: .76rem;
+  line-height: 1.2;
+  letter-spacing: .08em;
+}
+
+.hero-art figcaption b {
+  line-height: 1.45;
+}
+
+.explain i {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  grid-row: span 2;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--deep);
+  font: 900 .85rem/1 system-ui, sans-serif;
+}
