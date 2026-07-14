@@ -1,0 +1,132 @@
+{
+  "provider": "Cleveland Museum of Art Open Access",
+  "license": "CC0",
+  "policy": "https://www.clevelandart.org/open-access",
+  "works": {
+    "jiang-nan": {
+      "accession": "1953.247",
+      "title": "Fish and Rocks",
+      "url": "https://www.clevelandart.org/art/1953.247"
+    },
+    "hua": {
+      "accession": "1970.6.1",
+      "title": "Flowers and Birds in a Spring Landscape",
+      "url": "https://www.clevelandart.org/art/1970.6.1"
+    },
+    "yong-e": {
+      "accession": "1993.159",
+      "title": "Geese Returning Home",
+      "url": "https://www.clevelandart.org/art/1993.159"
+    },
+    "min-nong-er": {
+      "accession": "2012.72.1",
+      "title": "Spring and Autumn Farming (Spring)",
+      "url": "https://www.clevelandart.org/art/2012.72.1"
+    },
+    "gu-lang-yue-xing": {
+      "accession": "1955.37.12",
+      "title": "Shibiao Waiting for the Moon",
+      "url": "https://www.clevelandart.org/art/1955.37.12"
+    },
+    "feng": {
+      "accession": "1953.246",
+      "title": "Bamboo in the Wind",
+      "url": "https://www.clevelandart.org/art/1953.246"
+    },
+    "jing-ye-si": {
+      "accession": "1987.37",
+      "title": "Mountain Landscape in Moonlight",
+      "url": "https://www.clevelandart.org/art/1987.37"
+    },
+    "chun-xiao": {
+      "accession": "1982.68.6",
+      "title": "Two Women with Needlework in a Garden",
+      "url": "https://www.clevelandart.org/art/1982.68.6"
+    },
+    "cun-ju": {
+      "accession": "1961.261",
+      "title": "One Hundred Children at Play",
+      "url": "https://www.clevelandart.org/art/1961.261"
+    },
+    "xiao-chi": {
+      "accession": "1985.18",
+      "title": "Lotuses, Insects, and Birds",
+      "url": "https://www.clevelandart.org/art/1985.18"
+    },
+    "mei-hua": {
+      "accession": "1970.80",
+      "title": "Ink Plum",
+      "url": "https://www.clevelandart.org/art/1970.80"
+    },
+    "xiao-er-chui-diao": {
+      "accession": "1978.66",
+      "title": "River Village: Fisherman's Joy",
+      "url": "https://www.clevelandart.org/art/1978.66"
+    },
+    "jiang-xue": {
+      "accession": "1955.37.11",
+      "title": "Snowy Landscape",
+      "url": "https://www.clevelandart.org/art/1955.37.11"
+    },
+    "ye-su-shan-si": {
+      "accession": "1979.54",
+      "title": "Rain-coming Pavilion by the Stone Bridge at Mt. Tiantai",
+      "url": "https://www.clevelandart.org/art/1979.54"
+    },
+    "chi-le-ge": {
+      "accession": "1999.216.2",
+      "title": "Herdboys and Buffalo in Landscape",
+      "url": "https://www.clevelandart.org/art/1999.216.2"
+    },
+    "deng-guan-que-lou": {
+      "accession": "1955.37.5",
+      "title": "Scenery of Mt. Changbai after Huang Gongwang",
+      "url": "https://www.clevelandart.org/art/1955.37.5"
+    },
+    "wang-lu-shan-pu-bu": {
+      "accession": "1972.157",
+      "title": "Waterfall",
+      "url": "https://www.clevelandart.org/art/1972.157"
+    },
+    "jue-ju": {
+      "accession": "1981.4",
+      "title": "A Hundred Sparrows in a Lofty Grove",
+      "url": "https://www.clevelandart.org/art/1981.4"
+    },
+    "fu-de-gu-yuan-cao": {
+      "accession": "1985.365",
+      "title": "Willows",
+      "url": "https://www.clevelandart.org/art/1985.365"
+    },
+    "shan-xing": {
+      "accession": "1972.42",
+      "title": "White Clouds and Red Trees",
+      "url": "https://www.clevelandart.org/art/1972.42"
+    },
+    "zeng-liu-jing-wen": {
+      "accession": "1999.6",
+      "title": "Pipa (Loquats)",
+      "url": "https://www.clevelandart.org/art/1999.6"
+    },
+    "ye-shu-suo-jian": {
+      "accession": "1975.22.7",
+      "title": "Album of Miscellaneous Subjects, Leaf 7",
+      "url": "https://www.clevelandart.org/art/1975.22.7"
+    },
+    "wang-tian-men-shan": {
+      "accession": "1959.46",
+      "title": "River and Mountains on a Clear Autumn Day",
+      "url": "https://www.clevelandart.org/art/1959.46"
+    },
+    "yin-hu-shang": {
+      "accession": "1978.68",
+      "title": "Boats at Anchor on West Lake at the City Gate",
+      "url": "https://www.clevelandart.org/art/1978.68"
+    },
+    "wang-dong-ting": {
+      "accession": "1930.188",
+      "title": "Landscape with Ferry Boat, Geese and Full Moon",
+      "url": "https://www.clevelandart.org/art/1930.188"
+    }
+  }
+}
