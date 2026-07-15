@@ -1,132 +1,132 @@
 {
-  "provider": "Cleveland Museum of Art Open Access",
-  "license": "CC0",
-  "policy": "https://www.clevelandart.org/open-access",
+  "provider": "诗画小书童本地原创绘图",
+  "license": "Original project artwork",
+  "policy": "All 25 illustrations are generated locally from poem-specific vector primitives and bundled for offline use.",
   "works": {
     "jiang-nan": {
-      "accession": "1953.247",
-      "title": "Fish and Rocks",
-      "url": "https://www.clevelandart.org/art/1953.247"
+      "title": "江南",
+      "source": "Local original illustration",
+      "scene": "层层莲叶、粉荷、穿行的小鱼"
     },
     "hua": {
-      "accession": "1970.6.1",
-      "title": "Flowers and Birds in a Spring Landscape",
-      "url": "https://www.clevelandart.org/art/1970.6.1"
+      "title": "画",
+      "source": "Local original illustration",
+      "scene": "画轴中的远山、无声流水、常开花朵与安静小鸟"
     },
     "yong-e": {
-      "accession": "1993.159",
-      "title": "Geese Returning Home",
-      "url": "https://www.clevelandart.org/art/1993.159"
+      "title": "咏鹅",
+      "source": "Local original illustration",
+      "scene": "曲颈白鹅、绿水、红掌与清波"
     },
     "min-nong-er": {
-      "accession": "2012.72.1",
-      "title": "Spring and Autumn Farming (Spring)",
-      "url": "https://www.clevelandart.org/art/2012.72.1"
+      "title": "悯农（其二）",
+      "source": "Local original illustration",
+      "scene": "正午烈日、锄禾农人、汗水与稻田"
     },
     "gu-lang-yue-xing": {
-      "accession": "1955.37.12",
-      "title": "Shibiao Waiting for the Moon",
-      "url": "https://www.clevelandart.org/art/1955.37.12"
+      "title": "古朗月行（节选）",
+      "source": "Local original illustration",
+      "scene": "孩童仰望玉盘般的圆月与青云"
     },
     "feng": {
-      "accession": "1953.246",
-      "title": "Bamboo in the Wind",
-      "url": "https://www.clevelandart.org/art/1953.246"
+      "title": "风",
+      "source": "Local original illustration",
+      "scene": "被风吹动的秋叶、春花、江浪和竹林"
     },
     "jing-ye-si": {
-      "accession": "1987.37",
-      "title": "Mountain Landscape in Moonlight",
-      "url": "https://www.clevelandart.org/art/1987.37"
+      "title": "静夜思",
+      "source": "Local original illustration",
+      "scene": "窗前月光、地上如霜与思乡旅人"
     },
     "chun-xiao": {
-      "accession": "1982.68.6",
-      "title": "Two Women with Needlework in a Garden",
-      "url": "https://www.clevelandart.org/art/1982.68.6"
+      "title": "春晓",
+      "source": "Local original illustration",
+      "scene": "春日清晨、啼鸟、雨痕与满地落花"
     },
     "cun-ju": {
-      "accession": "1961.261",
-      "title": "One Hundred Children at Play",
-      "url": "https://www.clevelandart.org/art/1961.261"
+      "title": "村居",
+      "source": "Local original illustration",
+      "scene": "二月新草、黄莺、拂堤杨柳与儿童纸鸢"
     },
     "xiao-chi": {
-      "accession": "1985.18",
-      "title": "Lotuses, Insects, and Birds",
-      "url": "https://www.clevelandart.org/art/1985.18"
+      "title": "小池",
+      "source": "Local original illustration",
+      "scene": "泉眼、树阴、小荷尖角与停立的蜻蜓"
     },
     "mei-hua": {
-      "accession": "1970.80",
-      "title": "Ink Plum",
-      "url": "https://www.clevelandart.org/art/1970.80"
+      "title": "梅花",
+      "source": "Local original illustration",
+      "scene": "雪中墙角、独放白梅与暗香"
     },
     "xiao-er-chui-diao": {
-      "accession": "1978.66",
-      "title": "River Village: Fisherman's Joy",
-      "url": "https://www.clevelandart.org/art/1978.66"
+      "title": "小儿垂钓",
+      "source": "Local original illustration",
+      "scene": "草边侧坐垂钓的孩子与远处问路人"
     },
     "jiang-xue": {
-      "accession": "1955.37.11",
-      "title": "Snowy Landscape",
-      "url": "https://www.clevelandart.org/art/1955.37.11"
+      "title": "江雪",
+      "source": "Local original illustration",
+      "scene": "空寂雪山、寒江孤舟与蓑笠渔翁"
     },
     "ye-su-shan-si": {
-      "accession": "1979.54",
-      "title": "Rain-coming Pavilion by the Stone Bridge at Mt. Tiantai",
-      "url": "https://www.clevelandart.org/art/1979.54"
+      "title": "夜宿山寺",
+      "source": "Local original illustration",
+      "scene": "星空、高山寺楼与轻声仰望的人"
     },
     "chi-le-ge": {
-      "accession": "1999.216.2",
-      "title": "Herdboys and Buffalo in Landscape",
-      "url": "https://www.clevelandart.org/art/1999.216.2"
+      "title": "敕勒歌",
+      "source": "Local original illustration",
+      "scene": "阴山、穹庐般长空、低草与牛羊"
     },
     "deng-guan-que-lou": {
-      "accession": "1955.37.5",
-      "title": "Scenery of Mt. Changbai after Huang Gongwang",
-      "url": "https://www.clevelandart.org/art/1955.37.5"
+      "title": "登鹳雀楼",
+      "source": "Local original illustration",
+      "scene": "落日依山、黄河远流与层层高楼"
     },
     "wang-lu-shan-pu-bu": {
-      "accession": "1972.157",
-      "title": "Waterfall",
-      "url": "https://www.clevelandart.org/art/1972.157"
+      "title": "望庐山瀑布",
+      "source": "Local original illustration",
+      "scene": "香炉峰紫烟与从云天飞落的瀑布"
     },
     "jue-ju": {
-      "accession": "1981.4",
-      "title": "A Hundred Sparrows in a Lofty Grove",
-      "url": "https://www.clevelandart.org/art/1981.4"
+      "title": "绝句",
+      "source": "Local original illustration",
+      "scene": "翠柳黄鹂、青天白鹭、西岭雪与门外船"
     },
     "fu-de-gu-yuan-cao": {
-      "accession": "1985.365",
-      "title": "Willows",
-      "url": "https://www.clevelandart.org/art/1985.365"
+      "title": "赋得古原草送别（节选）",
+      "source": "Local original illustration",
+      "scene": "枯荣草原、远处野火与春风新芽"
     },
     "shan-xing": {
-      "accession": "1972.42",
-      "title": "White Clouds and Red Trees",
-      "url": "https://www.clevelandart.org/art/1972.42"
+      "title": "山行",
+      "source": "Local original illustration",
+      "scene": "寒山石径、白云人家、停车与红枫"
     },
     "zeng-liu-jing-wen": {
-      "accession": "1999.6",
-      "title": "Pipa (Loquats)",
-      "url": "https://www.clevelandart.org/art/1999.6"
+      "title": "赠刘景文",
+      "source": "Local original illustration",
+      "scene": "残荷、傲霜菊与橙黄橘绿"
     },
     "ye-shu-suo-jian": {
-      "accession": "1975.22.7",
-      "title": "Album of Miscellaneous Subjects, Leaf 7",
-      "url": "https://www.clevelandart.org/art/1975.22.7"
+      "title": "夜书所见",
+      "source": "Local original illustration",
+      "scene": "秋夜梧叶、江风、篱落儿童与一灯明"
     },
     "wang-tian-men-shan": {
-      "accession": "1959.46",
-      "title": "River and Mountains on a Clear Autumn Day",
-      "url": "https://www.clevelandart.org/art/1959.46"
+      "title": "望天门山",
+      "source": "Local original illustration",
+      "scene": "天门对峙、碧水回旋与日边孤帆"
     },
     "yin-hu-shang": {
-      "accession": "1978.68",
-      "title": "Boats at Anchor on West Lake at the City Gate",
-      "url": "https://www.clevelandart.org/art/1978.68"
+      "title": "饮湖上初晴后雨",
+      "source": "Local original illustration",
+      "scene": "西湖晴光与烟雨山色相接"
     },
     "wang-dong-ting": {
-      "accession": "1930.188",
-      "title": "Landscape with Ferry Boat, Geese and Full Moon",
-      "url": "https://www.clevelandart.org/art/1930.188"
+      "title": "望洞庭",
+      "source": "Local original illustration",
+      "scene": "秋月、镜面洞庭与青螺般君山"
     }
   }
 }
