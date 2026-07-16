@@ -34,24 +34,27 @@ export function dueSoon(progress={},now=Date.now()){
 export function rhythmGuide(line){
  const chars=[...line.replace(/[，。！？、；：]/g,'')];
  if(chars.length===5)return `${chars.slice(0,2).join('')} / ${chars.slice(2).join('')}`;
+ if(chars.length===6)return `${chars.slice(0,3).join('')} / ${chars.slice(3).join('')}`;
  if(chars.length===7)return `${chars.slice(0,2).join('')} / ${chars.slice(2,4).join('')} / ${chars.slice(4).join('')}`;
  if(chars.length>7){const mid=Math.ceil(chars.length/2);return `${chars.slice(0,mid).join('')} / ${chars.slice(mid).join('')}`}
  return chars.join('');
 }
 
 const moodByTheme={思乡:'想念又安静',惜春:'珍惜春光',童趣:'轻快好奇',孤高:'安静坚定',励志:'开阔向上',品格:'坚强清雅',惜粮:'认真感恩',边塞:'辽阔豪迈',生命:'有力量',山水:'惊喜赞叹',自然:'清新自在',想象:'神奇好奇',动物:'活泼可爱',勉励:'温暖坚定'};
+const unclearSeasonIds=new Set(['hua','feng','yong-e','gu-lang-yue-xing','jing-ye-si','xiao-er-chui-diao','ye-su-shan-si','deng-guan-que-lou','wang-lu-shan-pu-bu','wang-tian-men-shan']);
 export function meaningChallenge(poem,index=0){
  const mood=moodByTheme[poem.theme]||'安静欣赏';
  const variants=[
   {prompt:`如果走进《${poem.title}》的画面，最可能先看到什么？`,answer:poem.imagery[0],options:[poem.imagery[0],poem.imagery.at(-1),'热闹街市']},
   {prompt:`读这首诗时，用哪种心情最合适？`,answer:mood,options:[mood,'非常生气','急急忙忙']},
-  {prompt:`《${poem.title}》更像发生在哪个季节？`,answer:poem.season,options:['春','夏','秋','冬']}
+  unclearSeasonIds.has(poem.id)?{prompt:`《${poem.title}》里能确定看见哪一个画面线索？`,answer:poem.imagery.at(-1),options:[poem.imagery.at(-1),poem.imagery[0],'热闹街市']}:{prompt:`《${poem.title}》更像发生在哪个季节？`,answer:poem.season,options:['春','夏','秋','冬']}
  ];
  return variants[index%variants.length];
 }
 
 export function rewardForPoem(poem){
- return {poemCard:`《${poem.title}》诗词卡`,stamp:`${poem.dynasty}朝印章`,piece:`${poem.theme}画卷碎片`,messenger:`${poem.author}诗人卡`};
+ const sourceOnly=['hua','jiang-nan','chi-le-ge'].includes(poem.id);
+ return {poemCard:`《${poem.title}》诗词卡`,stamp:poem.dynasty==='不详'?'古诗发现印章':`${poem.dynasty}朝印章`,piece:`${poem.theme}画卷碎片`,messenger:sourceOnly?`${poem.title}来源卡`:`${poem.author}诗人卡`};
 }
 
 export function addPoemReward(state,poem){

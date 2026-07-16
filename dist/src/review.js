@@ -1,4 +1,8 @@
 export const DAY=86400000;
+export function localDateKey(now=Date.now()){
+  const date=new Date(now),pad=value=>String(value).padStart(2,'0');
+  return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
+}
 export function scheduleReview(progress={},result={},now=Date.now()){
   const nodes=[1,3,7,14,30]; let level=Math.max(0,Math.min(5,progress.level||0));
   const struggled=!result.correct||(result.hints||0)>2;
@@ -11,8 +15,11 @@ export function scheduleReview(progress={},result={},now=Date.now()){
   const priorStage=progress.reviewStage??Math.max(-1,(progress.level||0)-1);
   const reviewStage=struggled?Math.max(0,priorStage-1):Math.min(nodes.length-1,priorStage+1);
   const interval=nodes[reviewStage];
-  const errors=result.correct?(progress.errors||[]):[...(progress.errors||[]),result.errorType||'需要巩固'].slice(-5);
-  return {...progress,level,reviewStage,intervalDays:interval,nextReviewAt:now+interval*DAY,lastLearnedAt:now,hints:(progress.hints||0)+(result.hints||0),streak:result.correct?(progress.streak||0)+1:0,delayedSuccesses,errors,lastEvidence:{date:now,type:result.recitation?'背诵自评':result.errorType||'练习',result:result.correct?'完成':'需纠正',selfRating:result.selfRating||null}};
+  let errors=result.correct?[...(progress.errors||[])]:[...(progress.errors||[]),result.errorType||'需要巩固'].slice(-5);
+  const errorSuccesses={...(progress.errorSuccesses||{})},practiceType=result.practiceType||result.errorType;
+  if(result.correct&&practiceType&&errors.includes(practiceType)){errorSuccesses[practiceType]=(errorSuccesses[practiceType]||0)+1;if(errorSuccesses[practiceType]>=2){errors=errors.filter(x=>x!==practiceType);delete errorSuccesses[practiceType]}}
+  if(!result.correct&&practiceType)errorSuccesses[practiceType]=0;
+  return {...progress,level,reviewStage,intervalDays:interval,nextReviewAt:now+interval*DAY,lastLearnedAt:now,hints:(progress.hints||0)+(result.hints||0),streak:result.correct?(progress.streak||0)+1:0,delayedSuccesses,errors,errorSuccesses,lastEvidence:{date:now,type:result.recitation?'背诵自评':practiceType||'练习',result:result.correct?'完成':'需纠正',selfRating:result.selfRating||null}};
 }
 export function taskPriority(poem,progress={},now=Date.now()){
   if(progress.nextReviewAt&&progress.nextReviewAt<=now)return 400;
@@ -33,7 +40,7 @@ export function recommendedPractice(progress={}){
   return '看图回忆';
 }
 export function createDailyTasks(poems,progress={},count=3,now=Date.now()){
-  const date=new Date(now).toISOString().slice(0,10),limit=Math.max(3,count);
+  const date=localDateKey(now),limit=Math.max(3,count);
   const reviews=poems.filter(p=>p.grade<=2).sort((a,b)=>taskPriority(b,progress[b.id],now)-taskPriority(a,progress[a.id],now)).slice(0,2);
   const preview=poems.filter(p=>p.grade===3&&!(progress[p.id]?.level)).concat(poems.filter(p=>!(progress[p.id]?.level)&&p.grade<3)).find(p=>!reviews.includes(p));
   const tasks=reviews.map((poem,i)=>({id:`${date}-${poem.id}`,poemId:poem.id,mode:'review',kind:i===0?'找回快忘记的诗':'复习一首旧诗',practice:recommendedPractice(progress[poem.id]),done:false}));

@@ -1,26 +1,26 @@
 {
-  "provider": "诗画小书童本地原创绘图",
+  "provider": "诗画小书童原创诗意插画",
   "license": "Original project artwork",
-  "policy": "All 25 illustrations are generated locally from poem-specific vector primitives and bundled for offline use.",
+  "policy": "All illustrations are original project artwork bundled locally for offline use; assets may be created with built-in ImageGen or local vector drawing.",
   "works": {
     "jiang-nan": {
       "title": "江南",
-      "source": "Local original illustration",
+      "source": "Built-in ImageGen original illustration",
       "scene": "层层莲叶、粉荷、穿行的小鱼"
     },
     "hua": {
       "title": "画",
-      "source": "Local original illustration",
+      "source": "Built-in ImageGen original illustration",
       "scene": "画轴中的远山、无声流水、常开花朵与安静小鸟"
     },
     "yong-e": {
       "title": "咏鹅",
-      "source": "Local original illustration",
+      "source": "Built-in ImageGen original illustration",
       "scene": "曲颈白鹅、绿水、红掌与清波"
     },
     "min-nong-er": {
       "title": "悯农（其二）",
-      "source": "Local original illustration",
+      "source": "Built-in ImageGen original illustration",
       "scene": "正午烈日、锄禾农人、汗水与稻田"
     },
     "gu-lang-yue-xing": {

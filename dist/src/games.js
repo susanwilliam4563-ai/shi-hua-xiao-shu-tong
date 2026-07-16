@@ -1,5 +1,7 @@
 const unique=items=>[...new Set(items)];
 const rotate=(items,offset)=>items.map((_,i)=>items[(i+offset)%items.length]);
+const sourceOnlyIds=new Set(['hua','jiang-nan','chi-le-ge']);
+const unclearSeasonIds=new Set(['hua','feng','yong-e','gu-lang-yue-xing','jing-ye-si','xiao-er-chui-diao','ye-su-shan-si','deng-guan-que-lou','wang-lu-shan-pu-bu','wang-tian-men-shan']);
 
 export const gameModes=[
   {id:'mixed',title:'今日随机冒险',desc:'每次遇见不同玩法，不会一直做同一种题',icon:'闯'},
@@ -26,6 +28,8 @@ export function blankForPoem(poem,index=0){const lineIndex=index%poem.lines.leng
  const start=mode===0?0:mode===1?Math.max(0,line.length-2):Math.max(1,Math.floor(line.length/2)-1),size=mode===2?Math.min(3,line.length-start):Math.min(2,line.length-start);let word=mode===2?poem.imagery.find(x=>line.includes(x)):null;if(!word)word=line.slice(start,start+size);const other=poem.lines.map((x,i)=>x.slice((i+mode)%Math.max(1,x.length-1),(i+mode)%Math.max(1,x.length-1)+Math.max(2,word.length)));const pool=unique([word,...poem.imagery.filter(x=>x!==word),...other.filter(x=>x&&x!==word)]).slice(0,4);const kinds=['句首认字','句尾补词','诗中词语'];const instructions=['认出诗句开头缺少的字词。','读到句尾，补回最后的字词。','找到藏在诗句中间的意象词。'];return {kind:kinds[mode],instruction:instructions[mode],line,word,masked:line.replace(word,'＿'.repeat(word.length)),options:pool}}
 
 export function createQuestion(type,poem,poems,index=0){
+  if((type==='author'||type==='poet'||type==='identity')&&sourceOnlyIds.has(poem.id))type='title';
+  if(type==='season'&&unclearSeasonIds.has(poem.id))type='theme';
   const lineIndex=index%3,line=poem.lines[lineIndex],next=poem.lines[lineIndex+1];
   if(type==='title')return {type,poemId:poem.id,prompt:`画面里有“${poem.imagery.join('、')}”，是哪首诗？`,answer:poem.title,options:unique([poem.title,...distractPoems(poems,poem,'title')]),tip:'先把几个意象连成一幅画。'};
   if(type==='next')return {type,poemId:poem.id,prompt:`“${line}”的下一句是？`,answer:next,options:unique([next,...poem.lines.filter(x=>x!==next).slice(0,3)]),tip:'沿着诗里的画面往下走。'};
