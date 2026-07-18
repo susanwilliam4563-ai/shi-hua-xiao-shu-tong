@@ -22,3 +22,57 @@ main.container:has(.learning){padding-top:1.25rem}.learn-top{margin-bottom:.6rem
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}main.container:has(.learning){padding-left:.65rem;padding-right:.65rem}.learn-section-nav{display:flex;overflow-x:auto;padding:.55rem}.learn-section-nav button{min-width:140px;min-height:48px}.poem-learning-head{padding:.7rem .85rem}.poem-learning-head h1{font-size:1.55rem}.lesson-body{padding:.8rem}.lesson-body>.poem-scene-hero img{height:min(42vh,250px)}.reading-index{display:grid;grid-template-columns:repeat(2,1fr);gap:.35rem}.reading-index b,.reading-index button{grid-column:1/-1}.reading-index button{margin:0;width:100%}.reading-index span{text-align:center}.reading-layout{grid-template-columns:1fr}.term-grid{grid-template-columns:1fr!important}.practice-kinds{grid-template-columns:repeat(3,1fr)}.step-5 .word-bank{grid-template-columns:repeat(2,minmax(0,1fr))}.practice-instruction{align-items:flex-start;flex-direction:column;gap:.25rem}.step-actions{bottom:4.75rem}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}.poem-card{grid-template-columns:130px 1fr}.poem-card .scene{min-height:135px;background:#f3eee1}.poem-card .scene img{object-fit:contain}.poem-learning-head button{padding:.55rem .7rem;font-size:.8rem}.round-track{gap:.2rem}.round-track i{font-size:.65rem}.note-heading{align-items:flex-start}.note-heading .meaning-audio{padding:.6rem .7rem}.step-actions{padding-left:1rem;padding-right:1rem}.step-actions .primary{width:100%}}
 .update-ready{display:flex;align-items:center;gap:.45rem}.update-ready button{min-height:30px;padding:.25rem .55rem;border:1px solid #fff;background:#fff;color:var(--jade-deep);font-size:.75rem}
+
+/* v28: child-friendly focus screens and a distinct poetic recitation action */
+body.focus-mode #app>header,body.focus-mode #app>footer{display:none}
+body.focus-mode .container{max-width:1210px;min-height:100vh;padding-top:.65rem;padding-bottom:1rem}
+body.focus-mode .learn-top{max-width:1180px;margin-bottom:.45rem}
+body.focus-mode .learning{min-height:0}
+body.focus-mode .step-actions{bottom:0}
+body.focus-mode .game-play{margin:.5rem auto;padding:1.35rem 1.6rem}
+.chant-button{border-color:#dfc689;background:#fff3cf;color:#6d5322}
+.chant-button:hover{background:#f9e4a9}
+
+@media(min-width:761px){
+ body.focus-mode .step-1 .lesson-body{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr);grid-template-areas:"eyebrow eyebrow" "title title" "copy copy" "picture choices" "picture feedback";gap:.45rem 1rem}
+ body.focus-mode .step-1 .lesson-body>.eyebrow{grid-area:eyebrow}
+ body.focus-mode .step-1 .lesson-body>h2{grid-area:title;margin-bottom:.15rem}
+ body.focus-mode .step-1 .mission-copy{grid-area:copy;margin:.1rem 0 .45rem}
+ body.focus-mode .step-1 .poem-scene-hero{grid-area:picture;margin:0}
+ body.focus-mode .step-1 .poem-scene-hero img{height:100%;max-height:330px}
+ body.focus-mode .step-1 .choice{grid-area:choices;align-self:start}
+ body.focus-mode .step-1 .correction{grid-area:feedback;margin:0;align-self:end}
+}
+
+@media(min-width:761px) and (max-height:900px){
+ body.focus-mode .poem-learning-head{min-height:68px;padding:.5rem 1.1rem}
+ body.focus-mode .poem-learning-head h1{font-size:1.55rem}
+ body.focus-mode .quest-stepper{padding:.35rem .9rem}
+ body.focus-mode .quest-stepper>i{height:38px;border-radius:9px}
+ body.focus-mode .lesson-body{padding:.55rem 1.1rem .35rem}
+ body.focus-mode .lesson-body>h2{font-size:1.75rem;margin:.15rem 0 .45rem}
+ body.focus-mode .role-line{margin:.35rem 0 .55rem;padding:.4rem .65rem}
+ body.focus-mode .role-line>i{width:34px;height:34px;flex-basis:34px;font-size:1.05rem}
+ body.focus-mode .poem-scene-hero img{max-height:250px}
+ body.focus-mode .recitation-panel,body.focus-mode .listen-scene>section:last-child,body.focus-mode .reading-notes,body.focus-mode .meaning-quest{padding:.7rem}
+ body.focus-mode .recitation-panel .poem-lines p{margin:.25rem;padding:.35rem 2.6rem .35rem .7rem;font-size:1.25rem}
+ body.focus-mode .actions.compact{gap:.4rem;margin-top:.35rem}
+ body.focus-mode .actions.compact button{min-height:40px;padding:.45rem .7rem;font-size:.82rem}
+ body.focus-mode .listen-clues{gap:.45rem}
+ body.focus-mode .listen-clues button{min-height:66px;padding:.45rem}
+ body.focus-mode .correction{min-height:36px;margin:.4rem 0;padding:.55rem .7rem}
+ body.focus-mode .note-tabs{margin-bottom:.45rem}
+ body.focus-mode .note-tabs button{min-height:38px;padding:.35rem;font-size:.8rem}
+ body.focus-mode .meaning-summary{margin:.4rem 0 .55rem!important;padding:.55rem .7rem!important;line-height:1.45!important}
+ body.focus-mode .step-actions{padding:.5rem 1.1rem .65rem}
+ body.focus-mode .game-play>.scene{height:120px;min-height:0;margin:.55rem 0;overflow:hidden}
+ body.focus-mode .game-play>.scene img{width:100%;height:100%;object-fit:cover}
+ body.focus-mode .game-play h1{margin:.5rem 0;font-size:1.4rem}
+}
+
+@media(max-width:760px){
+ body.focus-mode .container{padding:.45rem .6rem 1rem}
+ body.focus-mode .learn-top{margin-bottom:.35rem}
+ body.focus-mode .step-actions{bottom:0}
+ body.focus-mode .game-play{margin:0 auto;padding:1rem}
+}

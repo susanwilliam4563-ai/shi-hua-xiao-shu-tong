@@ -1,7 +1,7 @@
-const VERSION='poem-scholar-v27';
+const VERSION='poem-scholar-v28';
 const POEMS=['jiang-nan','hua','yong-e','min-nong-er','gu-lang-yue-xing','feng','jing-ye-si','chun-xiao','cun-ju','xiao-chi','mei-hua','xiao-er-chui-diao','jiang-xue','ye-su-shan-si','chi-le-ge','deng-guan-que-lou','wang-lu-shan-pu-bu','jue-ju','fu-de-gu-yuan-cao','shan-xing','zeng-liu-jing-wen','ye-shu-suo-jian','wang-tian-men-shan','yin-hu-shang','wang-dong-ting'];
-const CORE=['/','/index.html','/manifest.webmanifest','/assets/app.js?v=27','/assets/poems.js?v=27','/assets/terms.js?v=27','/assets/review.js?v=27','/assets/games.js?v=27','/assets/storage.js?v=27','/assets/adventure.js?v=27','/assets/styles.css?v=27','/assets/rewards.css?v=27','/assets/corrections.css?v=27','/assets/reading.css?v=27','/assets/v8.css?v=27','/assets/semantic-fixes.css?v=27','/assets/adventure.css?v=27','/images/app-icon.png','/images/app-icon-512.png'];
-const IMAGES=POEMS.map(id=>`/images/${id}.webp?v=27`);
+const CORE=['/','/index.html','/manifest.webmanifest','/assets/app.js?v=28','/assets/poems.js?v=28','/assets/terms.js?v=28','/assets/review.js?v=28','/assets/games.js?v=28','/assets/storage.js?v=28','/assets/adventure.js?v=28','/assets/styles.css?v=28','/assets/rewards.css?v=28','/assets/corrections.css?v=28','/assets/reading.css?v=28','/assets/v8.css?v=28','/assets/semantic-fixes.css?v=28','/assets/adventure.css?v=28','/images/app-icon.png','/images/app-icon-512.png'];
+const IMAGES=POEMS.map(id=>`/images/${id}.webp?v=28`);
 self.addEventListener('install',event=>event.waitUntil(caches.open(VERSION).then(async cache=>{
   await cache.addAll(CORE);
   await Promise.allSettled(IMAGES.map(url=>cache.add(url)));
