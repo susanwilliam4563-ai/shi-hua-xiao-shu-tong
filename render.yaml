@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: shi-hua-xiao-shu-tong
+    runtime: static
+    buildCommand: pnpm install --frozen-lockfile && pnpm build
+    staticPublishPath: ./dist
+    autoDeployTrigger: commit
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /images/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /src/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /sw.js
+        name: Cache-Control
+        value: no-cache
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
