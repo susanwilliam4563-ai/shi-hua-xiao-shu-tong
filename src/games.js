@@ -53,5 +53,11 @@ export function createGameRound(mode,poems,count=8,seed=0){
   return Array.from({length:count},(_,i)=>createQuestion(types[i%types.length],poems[(seed+i)%poems.length],poems,i));
 }
 
+export function createPoemGameRound(mode,poem,poems,count=8,seed=0){
+  const allTypes=gameModes.slice(1).map(x=>x.id);
+  const types=mode==='mixed'?rotate(allTypes,seed%allTypes.length):Array(count).fill(mode);
+  return Array.from({length:count},(_,i)=>createQuestion(types[i%types.length],poem,poems,i));
+}
+
 export function pointsForAnswer(correct,attempt=1){return correct?(attempt===1?10:6):0}
 export function levelForPoints(points){if(points>=500)return {name:'诗林小先生',icon:'🌳'};if(points>=250)return {name:'花开小诗人',icon:'🌸'};if(points>=100)return {name:'青枝小书童',icon:'🌿'};return {name:'新芽小书童',icon:'🌱'}}
